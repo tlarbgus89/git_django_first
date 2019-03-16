@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Candidate, Poll, Choice
+from .models import Candidate, Poll
 
 import datetime
 
@@ -10,6 +10,7 @@ def index(request):
     candidates = Candidate.objects.all()
     context = {'candidates' : candidates}
     return render(request, 'elections/index.html', context)
+
 
 def areas(request, area):
     today = datetime.datetime.now()
@@ -23,3 +24,5 @@ def areas(request, area):
                'area' : area,
                'poll':poll}
     return render(request, 'elections/area.html', context)
+
+
